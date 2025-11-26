@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://socialmockup.app/sitemap.xml
+

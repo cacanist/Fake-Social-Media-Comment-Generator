@@ -1,0 +1,857 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: #f8f9fa;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root.dark body {
+  background: #0a0a0a;
+  color: #e0e0e0;
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.app-header {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+}
+
+.theme-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 8px;
+  cursor: pointer;
+  color: #666;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle:hover {
+  background: #f5f5f5;
+  border-color: #333;
+  color: #333;
+}
+
+:root.dark .theme-toggle {
+  border-color: #333;
+  color: #999;
+}
+
+:root.dark .theme-toggle:hover {
+  background: #2a2a2a;
+  border-color: #555;
+  color: #fff;
+}
+
+.header-title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 12px;
+}
+
+:root.dark .header-title {
+  color: #fff;
+}
+
+.header-subtitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 16px;
+}
+
+:root.dark .header-subtitle {
+  color: #fff;
+}
+
+.header-description {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+:root.dark .header-description {
+  color: #888;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: 40px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+:root.dark .container {
+  background: #000;
+  border-color: #333;
+}
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.right-panel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  border-radius: 12px;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  min-height: 500px;
+  border: 1px solid #eaeaea;
+}
+
+:root.dark .right-panel {
+  background: #111;
+  border-color: #333;
+}
+
+.selector-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  border-bottom: 1px solid #eaeaea;
+  padding-bottom: 0;
+  transition: border-color 0.3s ease;
+}
+
+:root.dark .selector-group {
+  border-bottom-color: #333;
+}
+
+.platform-selector {
+  display: flex;
+  gap: 0;
+  flex: 1;
+}
+
+.language-selector {
+  display: flex;
+  gap: 4px;
+  background: #f5f5f5;
+  padding: 4px;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+:root.dark .language-selector {
+  background: #111;
+}
+
+.platform-tab {
+  flex: 1;
+  padding: 12px 24px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.platform-tab:hover {
+  color: #000;
+}
+
+:root.dark .platform-tab {
+  color: #888;
+}
+
+:root.dark .platform-tab:hover {
+  color: #fff;
+}
+
+.platform-tab.active {
+  color: #000;
+  font-weight: 600;
+}
+
+:root.dark .platform-tab.active {
+  color: #fff;
+}
+
+.platform-tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #000;
+}
+
+:root.dark .platform-tab.active::after {
+  background: #fff;
+}
+
+.language-tab {
+  padding: 6px 12px;
+  border: none;
+  background: transparent;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.language-tab:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+:root.dark .language-tab {
+  color: #888;
+}
+
+:root.dark .language-tab:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.language-tab.active {
+  color: #000;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+:root.dark .language-tab.active {
+  color: #fff;
+  background: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.profile-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+}
+
+.profile-image-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #e0e0e0;
+  transition: border-color 0.3s ease;
+}
+
+:root.dark .profile-image-container {
+  border-color: #333;
+}
+
+.profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e0e0e0;
+  color: #999;
+  font-size: 32px;
+  font-weight: bold;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+:root.dark .profile-image-placeholder {
+  background: #2a2a2a;
+  color: #666;
+}
+
+.upload-options {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.upload-button {
+  padding: 8px 16px;
+  background: #000;
+  color: white;
+  border: 1px solid #000;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.upload-button:hover {
+  background: #333;
+  border-color: #333;
+}
+
+:root.dark .upload-button {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+:root.dark .upload-button:hover {
+  background: #ccc;
+  border-color: #ccc;
+}
+
+.or-text {
+  color: #999;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+:root.dark .or-text {
+  color: #666;
+}
+
+.generate-button {
+  padding: 8px 16px;
+  background: #fff;
+  color: #000;
+  border: 1px solid #eaeaea;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.generate-button:hover {
+  border-color: #000;
+}
+
+:root.dark .generate-button {
+  background: #000;
+  color: #fff;
+  border-color: #333;
+}
+
+:root.dark .generate-button:hover {
+  border-color: #fff;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+:root.dark .checkbox-label {
+  color: #ccc;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.form-input,
+.form-textarea {
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  transition: border-color 0.2s, background-color 0.3s ease, color 0.3s ease;
+  background: white;
+  color: #333;
+}
+
+:root.dark .form-input,
+:root.dark .form-textarea {
+  background: #2a2a2a;
+  border-color: #333;
+  color: #e0e0e0;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #000;
+}
+
+:root.dark .form-input:focus,
+:root.dark .form-textarea:focus {
+  border-color: #fff;
+}
+
+.char-count {
+  font-size: 12px;
+  color: #999;
+  text-align: right;
+  transition: color 0.3s ease;
+}
+
+:root.dark .char-count {
+  color: #666;
+}
+
+.download-button {
+  padding: 14px 24px;
+  background: #000;
+  color: white;
+  border: 1px solid #000;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.download-button:hover {
+  background: #333;
+  border-color: #333;
+  transform: translateY(-1px);
+}
+
+:root.dark .download-button {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+}
+
+:root.dark .download-button:hover {
+  background: #eaeaea;
+  border-color: #eaeaea;
+}
+
+.download-button:active {
+  transform: translateY(0);
+}
+
+.comment-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.preview-canvas {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); Removed this as it's handled in phone-screen context now */
+}
+
+.app-footer {
+  text-align: center;
+  padding: 40px 20px;
+  margin-top: 60px;
+  background: #fff;
+  border-top: 1px solid #eaeaea;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+:root.dark .app-footer {
+  background: #000;
+  border-top-color: #333;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+:root.dark .footer-text {
+  color: #999;
+}
+
+.footer-free {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 16px;
+  transition: color 0.3s ease;
+}
+
+:root.dark .footer-free {
+  color: #666;
+}
+
+.footer-language-selector {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+
+  .right-panel {
+    min-height: 200px;
+  }
+
+  .header-title {
+    font-size: 36px;
+  }
+
+  .header-subtitle {
+    font-size: 20px;
+  }
+
+  .header-top {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .theme-toggle {
+    position: static;
+    transform: none;
+  }
+}
+
+
+/* SEO Content Section */
+.seo-content {
+  max-width: 1200px;
+  width: 100%;
+  margin: 60px auto 0;
+  padding: 40px;
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+:root.dark .seo-content {
+  background: #000;
+  border-color: #333;
+  color: #fff;
+}
+
+.seo-content h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #000;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+:root.dark .seo-content h2 {
+  color: #fff;
+}
+
+.seo-content h3 {
+  font-size: 20px;
+  margin: 32px 0 16px;
+  color: #000;
+  font-weight: 600;
+}
+
+:root.dark .seo-content h3 {
+  color: #fff;
+}
+
+.seo-content p {
+  margin-bottom: 16px;
+  line-height: 1.7;
+  font-size: 16px;
+  color: #666;
+}
+
+:root.dark .seo-content p {
+  color: #888;
+}
+
+.seo-content ul, 
+.seo-content ol {
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+.seo-content li {
+  margin-bottom: 12px;
+  line-height: 1.6;
+  font-size: 16px;
+  color: #666;
+}
+
+:root.dark .seo-content li {
+  color: #888;
+}
+
+.seo-content strong {
+  color: #000;
+  font-weight: 600;
+}
+
+:root.dark .seo-content strong {
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .seo-content {
+    padding: 24px;
+  }
+  
+  .seo-content h2 {
+    font-size: 24px;
+  }
+}
+
+/* Phone Mockup Styles */
+.phone-mockup {
+  width: 240px;
+  height: 480px;
+  background: #000;
+  border-radius: 32px;
+  padding: 8px;
+  position: relative;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  border: 3px solid #000;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0; /* Prevent shrinking */
+  margin: auto; /* Center in flex container */
+}
+
+:root.dark .phone-mockup {
+  background: #000;
+  border-color: #000;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.phone-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 24px;
+  background: #000;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  z-index: 10;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  /* align-items: center; Removed to allow absolute positioning to work better */
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+}
+
+.phone-screen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.02) 0%, rgba(0,0,0,0.1) 100%);
+  pointer-events: none;
+}
+
+/* Phone screen should not be affected by dark mode */
+:root.dark .phone-screen {
+  background: #ffffff;
+}
+
+/* Platform specific backgrounds for phone screen - always colorful/gradient */
+.phone-screen.tiktok .reels-video-bg,
+.phone-screen.instagram .reels-video-bg,
+.phone-screen.youtube .reels-video-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+}
+
+/* Dark mode should not affect phone screen background */
+:root.dark .phone-screen.tiktok .reels-video-bg,
+:root.dark .phone-screen.instagram .reels-video-bg,
+:root.dark .phone-screen.youtube .reels-video-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+}
+
+@media (max-width: 480px) {
+  .phone-mockup {
+    width: 220px;
+    height: 440px;
+    border-radius: 28px;
+  }
+  .phone-screen {
+    border-radius: 20px;
+  }
+}
+
+/* Reels/Content Overlay Styles */
+.reels-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 16px;
+  z-index: 20;
+  pointer-events: none; /* Let clicks pass through to canvas if needed */
+}
+
+.reels-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+  z-index: 1;
+}
+
+/* Dark mode should not affect video background */
+:root.dark .reels-video-bg {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+}
+
+.reels-right-actions {
+  position: absolute;
+  right: 12px;
+  bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.action-icon {
+  width: 28px;
+  height: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.action-text {
+  font-size: 10px;
+  color: white;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.reels-bottom-info {
+  margin-bottom: 20px;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+}
+
+.reels-username {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.reels-caption {
+  font-size: 12px;
+  opacity: 0.9;
+  margin-bottom: 8px;
+  max-width: 80%;
+}
+
+/* Canvas positioning override for Reels look */
+.phone-screen .preview-canvas {
+  z-index: 30; /* Above overlay */
+  position: absolute;
+  top: 35%; /* Biraz daha aşağı indirerek daha dengeli durmasını sağlayalım */
+  left: 50%; /* Reference for centering */
+  transform: translateX(-50%) scale(0.65); /* YouTube gibi geniş içerikler için biraz daha küçültelim */
+  transform-origin: center top;
+  
+  /* Use drop-shadow filter instead of box-shadow for better visual with speech bubbles */
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+  box-shadow: none; 
+}
