@@ -555,6 +555,47 @@ body {
     padding: 20px;
   }
 
+  .selector-group {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 16px;
+    padding-bottom: 0;
+  }
+
+  .platform-selector {
+    width: 100%;
+  }
+
+  .language-selector {
+    align-self: center;
+    margin-bottom: 4px;
+  }
+
+  .platform-tab {
+    padding: 12px 8px;
+    font-size: 14px;
+  }
+
+  .language-tab {
+    padding: 6px 12px;
+  }
+
+  .upload-options {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .upload-button, 
+  .generate-button {
+    flex: auto;
+    min-width: 120px;
+    text-align: center;
+    justify-content: center;
+    white-space: nowrap;
+  }
+
   .right-panel {
     min-height: 200px;
   }
