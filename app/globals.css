@@ -846,9 +846,9 @@ body {
 .phone-screen .preview-canvas {
   z-index: 30; /* Above overlay */
   position: absolute;
-  top: 35%; /* Biraz daha aşağı indirerek daha dengeli durmasını sağlayalım */
+  top: 28%; /* Daha yukarıda konumlandır */
   left: 50%; /* Reference for centering */
-  transform: translateX(-50%) scale(0.65); /* YouTube gibi geniş içerikler için biraz daha küçültelim */
+  transform: translateX(-50%) scale(0.85); /* Daha büyük yorum önizlemesi */
   transform-origin: center top;
   
   /* Use drop-shadow filter instead of box-shadow for better visual with speech bubbles */

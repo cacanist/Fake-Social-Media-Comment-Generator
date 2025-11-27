@@ -15,7 +15,7 @@ export class YouTubePlatform implements IPlatform {
       textColor: '#030303',
       usernameFontSize: 18, // Daha büyük font (14'ten 18'e)
       commentFontSize: 18, // Daha büyük font (14'ten 18'e)
-      padding: 24, // Daha fazla padding (16'dan 24'e)
+      padding: 32, // Daha fazla padding
       borderRadius: 12, // Orantılı border radius (8'den 12'ye)
       verifiedIconSize: 0,
       profileImageSize: 60, // Daha büyük profil resmi (40'tan 60'a)
@@ -59,7 +59,7 @@ export class YouTubePlatform implements IPlatform {
     const totalHeight = config.padding * 2 + contentHeight;
     
     canvas.width = config.commentWidth;
-    canvas.height = Math.max(totalHeight, 80);
+    canvas.height = Math.max(totalHeight, 140);
 
     // 1. Arka Plan
     ctx.clearRect(0, 0, canvas.width, canvas.height); // Temizle
