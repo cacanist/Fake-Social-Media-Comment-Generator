@@ -13,7 +13,7 @@ export function CommentForm({ data, onDataChange, language = 'en' }: CommentForm
   const t = translations[language];
 
   const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const value = e.target.value.slice(0, 150);
+    const value = e.target.value;
     onDataChange({ commentText: value });
   };
 
